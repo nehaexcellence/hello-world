@@ -3,10 +3,9 @@ import React from 'react';
 
 function Todo({ todo, index, removeTodo}) {
     return (
-        <div 
-        >
+        <div  >
           {todo.text}
-          <div >
+          <div className="right">
           <button onClick={() => removeTodo(index)}>x</button>
          
           </div>
