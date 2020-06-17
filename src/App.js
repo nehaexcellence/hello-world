@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "./App.css";
 import TodoForm from './TodoForm';
@@ -21,6 +22,13 @@ function App() {
       }
     }))
   }
+  const updateTodo = (e, index) =>{
+    const newTodos = [...todos];
+     newTodos[index].text = e.target.value; 
+     setTodos(newTodos);
+     
+  }
+  // console.log(setTodos,"123456789");
  
   const  onTodoClick = index =>{
     setTodos(todos.map((val, key)=>{
@@ -29,30 +37,37 @@ function App() {
           delete val.completeTime;
         }
         val['completeTime']= new Date()
-        // console.log(val,"asdf");
+       
         val['checked'] = !val.checked;
       }
       return val
     }))
   }
 
-  
 
   return (
     <div className="app">
      <TodoForm addTodo={addTodo} />
       <div className="todo-list">
-        {todos.map((todo, index) => (
+        {todos.length ? ( 
+        todos.map((todo, index) => (
           <Todo
             key={index}
             index={index}
             todo={todo}
             removeTodo={removeTodo}
             onTodoClick={onTodoClick}
+            updateTodo={updateTodo}
           />
-        ))}
+        ))
+        ) : ''}
        
       </div>
+      <div className="status-todo">
+             <a href="#">ALL</a>
+              <a href="#">Active</a>
+              <a href="#">Completed</a>
+          </div>
     </div>
   );
 }

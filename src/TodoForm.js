@@ -6,6 +6,7 @@ function TodoForm({ addTodo }) {
       e.preventDefault();
       if (!value) return;
       addTodo(value);
+      // console.log(addTodo);
 
       setValue("");
     };
@@ -13,9 +14,10 @@ function TodoForm({ addTodo }) {
     return (
         <div>
              <h1>Todo App</h1>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} class="text-input">
                     <input type="text"  className="input"  value={value} onChange={e => setValue(e.target.value)}
                     />
+                    
                 </form>
         </div>
        
